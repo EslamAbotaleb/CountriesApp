@@ -67,4 +67,15 @@ final class CountriesViewModel: BaseViewModel {
             }
         }
     }
+    
+    // Add / Remove Countries
+    func addCountry(_ country: CountryDTO) {
+        guard selectedCountries.count < 5 else { return }
+        guard !selectedCountries.contains(where: { $0.name == country.name }) else { return }
+        selectedCountries.append(country)
+    }
+    
+    func removeCountry(_ country: CountryDTO) {
+        selectedCountries.removeAll { $0.id == country.id }
+    }
 }
