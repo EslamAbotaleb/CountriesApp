@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    // For debugging
+    private let apiUrl = CountriesEnvironment.shared.context.networkContext.baseURLString
+
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            
             Text("Hello, world!")
+
+            // Show API URL for debugging
+            Text("API URL: \(apiUrl)")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
         }
         .padding()
     }
