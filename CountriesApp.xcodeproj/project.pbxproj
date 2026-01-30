@@ -17,26 +17,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B797A87D2F2CC66400E42E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7B460152F2C2DF800F19C59 /* CountriesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountriesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B460222F2C2DFB00F19C59 /* CountriesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B7B460652F2C32FB00F19C59 /* Exceptions for "CountriesApp" folder in "CountriesApp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = B7B460142F2C2DF800F19C59 /* CountriesApp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7B460172F2C2DF800F19C59 /* CountriesApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				B7B460652F2C32FB00F19C59 /* Exceptions for "CountriesApp" folder in "CountriesApp" target */,
-			);
 			path = CountriesApp;
 			sourceTree = "<group>";
 		};
@@ -69,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				B7B460172F2C2DF800F19C59 /* CountriesApp */,
+				B797A87D2F2CC66400E42E05 /* Info.plist */,
 				B7B460252F2C2DFB00F19C59 /* CountriesAppTests */,
 				B7B460162F2C2DF800F19C59 /* Products */,
 			);
