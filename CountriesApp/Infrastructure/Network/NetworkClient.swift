@@ -21,8 +21,7 @@ final class NetworkClient: NetworkProtocol {
         context: CountriesContext,
         network: NetworkServiceProtocol = NetworkService(),
         requestModifiers: [RequestModifier] = [
-            AuthorizationModifier(),
-            LanguageModifier()
+            AuthorizationModifier()
         ],
         responseProcessor: ResponseProcessorProtocol = ResponseProcessor()) {
         self.context = context
