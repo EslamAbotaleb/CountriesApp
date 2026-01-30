@@ -101,4 +101,28 @@ final class CountriesViewModel: BaseViewModel {
             selectedCountries.append(egypt)
         }
     }
+    
+    private func setDefaultAfterCountriesLoaded() {
+        guard selectedCountries.isEmpty else { return }
+        
+        let status = CLLocationManager().authorizationStatus
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            if let code = locationCountryCode,
+               let country = allCountries.first(where: {
+                   $0.name.lowercased().contains(code.lowercased())
+               }) {
+                selectedCountries.append(country)
+            }
+        case .denied, .restricted:
+            // User denied location → show Egypt
+            addEgyptAsDefaultCountry()
+        case .notDetermined:
+            // Permission not asked yet → do nothing
+            break
+        @unknown default:
+            break
+        }
+    }
 }
