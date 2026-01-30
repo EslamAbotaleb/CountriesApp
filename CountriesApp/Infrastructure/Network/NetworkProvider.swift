@@ -23,9 +23,8 @@ final class NetworkProvider {
 
         client = NetworkClient(
             context: _context,
-            requestModifiers: [
-                AuthorizationModifier(),
-                LanguageModifier()
+            requestModifiers: [ // we can add modifier serve the network behave like language auth token & so on
+                AuthorizationModifier()
             ]
         )
     }
