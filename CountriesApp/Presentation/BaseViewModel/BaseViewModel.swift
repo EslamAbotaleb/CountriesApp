@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 protocol BaseViewModel: ObservableObject {
     var isLoading: Bool { get set }
     var errorMessage: String? { get set }
