@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 final class CountriesViewModel: BaseViewModel {
     
@@ -22,6 +23,8 @@ final class CountriesViewModel: BaseViewModel {
     // MARK: - Dependencies
     private let getCountriesUseCase: GetCountriesUseCaseProtocol
     
+    private var searchTask: Task<Void, Never>?
+
     // MARK: - Init
     init(getCountriesUseCase: GetCountriesUseCaseProtocol = GetCountriesUseCase(repository: CountriesRepository())) {
         self.getCountriesUseCase = getCountriesUseCase
@@ -34,6 +37,34 @@ final class CountriesViewModel: BaseViewModel {
         }) { [weak self] countries in
             guard let self = self else { return }
             self.allCountries = countries
+        }
+    }
+    
+    // Search
+    func search() {
+        searchTask?.cancel()
+
+        let query = searchText
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+
+        guard !query.isEmpty else {
+            searchResults = []
+            return
+        }
+
+        let countriesList = allCountries
+
+        searchTask = Task(priority: .userInitiated) { [weak self] in
+            guard let self else { return }
+
+            let result = countriesList.filter {
+                $0.name.lowercased().contains(query)
+            }
+
+            await MainActor.run {
+                self.searchResults = result
+            }
         }
     }
 }
