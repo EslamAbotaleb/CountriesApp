@@ -77,6 +77,9 @@ struct CountriesMainView: View {
             .onChange(of: viewModel.searchText) { _, _ in
                 viewModel.search()
             }
+            .navigationDestination(for: CountryDTO.self) { country in
+                CountryDetailsView(country: country)
+            }
             .task {
                 await viewModel.loadCountries()
             }
