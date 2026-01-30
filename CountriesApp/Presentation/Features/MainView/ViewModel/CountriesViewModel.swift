@@ -26,4 +26,14 @@ final class CountriesViewModel: BaseViewModel {
     init(getCountriesUseCase: GetCountriesUseCaseProtocol = GetCountriesUseCase(repository: CountriesRepository())) {
         self.getCountriesUseCase = getCountriesUseCase
     }
+    
+    // Load Countries
+    func loadCountries() async {
+        await perform(action: {
+            try await self.getCountriesUseCase.execute()
+        }) { [weak self] countries in
+            guard let self = self else { return }
+            self.allCountries = countries
+        }
+    }
 }

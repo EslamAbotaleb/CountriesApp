@@ -7,13 +7,15 @@
 
 import Foundation
 
+// MARK: - Base ViewModel
+/// A base protocol for all ViewModels in the app.
+
 @MainActor
 protocol BaseViewModel: ObservableObject {
     var isLoading: Bool { get set }
     var errorMessage: String? { get set }
 }
 
-@MainActor
 extension BaseViewModel {
     func perform<T>(
         action: @escaping () async throws -> T,
