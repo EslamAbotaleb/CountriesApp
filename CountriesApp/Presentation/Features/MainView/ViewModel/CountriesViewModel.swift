@@ -53,12 +53,17 @@ final class CountriesViewModel: BaseViewModel {
     
     // Load Countries
     func loadCountries() async {
+        await MainActor.run { isLoading = true }
+
         await perform(action: {
             try await self.getCountriesUseCase.execute()
         }) { [weak self] countries in
             guard let self = self else { return }
             self.allCountries = countries
+            self.setDefaultAfterCountriesLoaded()
         }
+
+        await MainActor.run { isLoading = false }
     }
     
     // Search

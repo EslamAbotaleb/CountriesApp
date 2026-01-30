@@ -39,7 +39,7 @@ extension CountriesViewModel {
         }
     }
     
-    private func setDefaultAfterCountriesLoaded() {
+   func setDefaultAfterCountriesLoaded() {
         guard selectedCountries.isEmpty else { return }
         
         let status = CLLocationManager().authorizationStatus
