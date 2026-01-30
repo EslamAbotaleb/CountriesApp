@@ -9,7 +9,7 @@ import Foundation
 import Testing
 @testable import CountriesApp
 
-@MainActor
+@Suite
 struct NetworkLayerTests {
 
     @Test

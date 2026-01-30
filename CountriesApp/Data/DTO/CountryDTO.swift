@@ -8,7 +8,7 @@
 import Foundation
 
 struct CountryDTO: Identifiable, Hashable {
-    let id = UUID()
+    var id = UUID()
     let name: String
     let capital: String
     let currency: String
@@ -41,5 +41,23 @@ extension CountryDTO {
         self.name = name
         self.capital = capital
         self.currency = currency
+    }
+}
+
+// MARK: - Mock
+extension CountryDTO {
+    static func mock(
+        id: UUID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!,
+        name: String = "Egypt",
+        capital: String = "Cairo",
+        currency: String = "EGP"
+    ) -> CountryDTO {
+        var country = CountryDTO(
+            name: name,
+            capital: capital,
+            currency: currency
+        )
+        country.id = id
+        return country
     }
 }
