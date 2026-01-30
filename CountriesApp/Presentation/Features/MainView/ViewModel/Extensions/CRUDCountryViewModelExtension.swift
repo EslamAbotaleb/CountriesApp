@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CRUDCountryViewModelExtension.swift
 //  CountriesApp
 //
 //  Created by Eslam Abotaleb on 30/01/2026.
@@ -13,10 +13,12 @@ extension CountriesViewModel {
         guard selectedCountries.count < 5 else { return }
         guard !selectedCountries.contains(where: { $0.name == country.name }) else { return }
         selectedCountries.append(country)
+        saveSelectedCountries() // <-- save
     }
     
     func removeCountry(_ country: CountryDTO) {
         selectedCountries.removeAll { $0.id == country.id }
+        saveSelectedCountries() // <-- save
     }
     
     // set default country

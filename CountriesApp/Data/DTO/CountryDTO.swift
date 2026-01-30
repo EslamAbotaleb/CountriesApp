@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CountryDTO: Identifiable, Hashable {
+struct CountryDTO: Identifiable, Hashable, Codable {
     var id = UUID()
     let name: String
     let capital: String

@@ -26,13 +26,14 @@ final class CountriesViewModel: BaseViewModel {
     
     private let locationManager = LocationManager()
     private var searchTask: Task<Void, Never>?
-    
+
     var locationCountryCode: String?
+    let selectedCountriesKey = "SelectedCountriesKey"
 
     // MARK: - Init
     init(getCountriesUseCase: GetCountriesUseCaseProtocol = GetCountriesUseCase(repository: CountriesRepository())) {
         self.getCountriesUseCase = getCountriesUseCase
-        
+
         // Location callbacks
         locationManager.onCountryCode = { [weak self] code in
             guard let self = self else { return }
@@ -60,6 +61,7 @@ final class CountriesViewModel: BaseViewModel {
         }) { [weak self] countries in
             guard let self = self else { return }
             self.allCountries = countries
+            self.loadSavedOrDefaultCountries()
             self.setDefaultAfterCountriesLoaded()
         }
 
