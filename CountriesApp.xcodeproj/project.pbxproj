@@ -14,19 +14,11 @@
 			remoteGlobalIDString = B7B460142F2C2DF800F19C59;
 			remoteInfo = CountriesApp;
 		};
-		B7B4602D2F2C2DFB00F19C59 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B7B4600D2F2C2DF800F19C59 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B7B460142F2C2DF800F19C59;
-			remoteInfo = CountriesApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B7B460152F2C2DF800F19C59 /* CountriesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountriesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B460222F2C2DFB00F19C59 /* CountriesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7B4602C2F2C2DFB00F19C59 /* CountriesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -53,11 +45,6 @@
 			path = CountriesAppTests;
 			sourceTree = "<group>";
 		};
-		B7B4602F2F2C2DFB00F19C59 /* CountriesAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CountriesAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,13 +62,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7B460292F2C2DFB00F19C59 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,7 +70,6 @@
 			children = (
 				B7B460172F2C2DF800F19C59 /* CountriesApp */,
 				B7B460252F2C2DFB00F19C59 /* CountriesAppTests */,
-				B7B4602F2F2C2DFB00F19C59 /* CountriesAppUITests */,
 				B7B460162F2C2DF800F19C59 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +79,6 @@
 			children = (
 				B7B460152F2C2DF800F19C59 /* CountriesApp.app */,
 				B7B460222F2C2DFB00F19C59 /* CountriesAppTests.xctest */,
-				B7B4602C2F2C2DFB00F19C59 /* CountriesAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,29 +131,6 @@
 			productReference = B7B460222F2C2DFB00F19C59 /* CountriesAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B7B4602B2F2C2DFB00F19C59 /* CountriesAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B7B4603C2F2C2DFB00F19C59 /* Build configuration list for PBXNativeTarget "CountriesAppUITests" */;
-			buildPhases = (
-				B7B460282F2C2DFB00F19C59 /* Sources */,
-				B7B460292F2C2DFB00F19C59 /* Frameworks */,
-				B7B4602A2F2C2DFB00F19C59 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B7B4602E2F2C2DFB00F19C59 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B7B4602F2F2C2DFB00F19C59 /* CountriesAppUITests */,
-			);
-			name = CountriesAppUITests;
-			packageProductDependencies = (
-			);
-			productName = CountriesAppUITests;
-			productReference = B7B4602C2F2C2DFB00F19C59 /* CountriesAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,10 +145,6 @@
 						CreatedOnToolsVersion = 26.2;
 					};
 					B7B460212F2C2DFB00F19C59 = {
-						CreatedOnToolsVersion = 26.2;
-						TestTargetID = B7B460142F2C2DF800F19C59;
-					};
-					B7B4602B2F2C2DFB00F19C59 = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = B7B460142F2C2DF800F19C59;
 					};
@@ -215,7 +166,6 @@
 			targets = (
 				B7B460142F2C2DF800F19C59 /* CountriesApp */,
 				B7B460212F2C2DFB00F19C59 /* CountriesAppTests */,
-				B7B4602B2F2C2DFB00F19C59 /* CountriesAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,13 +179,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B7B460202F2C2DFB00F19C59 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7B4602A2F2C2DFB00F19C59 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -259,13 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7B460282F2C2DFB00F19C59 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -273,11 +209,6 @@
 			isa = PBXTargetDependency;
 			target = B7B460142F2C2DF800F19C59 /* CountriesApp */;
 			targetProxy = B7B460232F2C2DFB00F19C59 /* PBXContainerItemProxy */;
-		};
-		B7B4602E2F2C2DFB00F19C59 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B7B460142F2C2DF800F19C59 /* CountriesApp */;
-			targetProxy = B7B4602D2F2C2DFB00F19C59 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -521,48 +452,6 @@
 			};
 			name = Release;
 		};
-		B7B4603D2F2C2DFB00F19C59 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReferenceAnchor = B7B460172F2C2DF800F19C59 /* CountriesApp */;
-			baseConfigurationReferenceRelativePath = Common/Config/Debug.xcconfig;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3VV7T7W7D6;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CountriesAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CountriesApp;
-			};
-			name = Debug;
-		};
-		B7B4603E2F2C2DFB00F19C59 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3VV7T7W7D6;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CountriesAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CountriesApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -589,15 +478,6 @@
 			buildConfigurations = (
 				B7B4603A2F2C2DFB00F19C59 /* Debug */,
 				B7B4603B2F2C2DFB00F19C59 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B7B4603C2F2C2DFB00F19C59 /* Build configuration list for PBXNativeTarget "CountriesAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B7B4603D2F2C2DFB00F19C59 /* Debug */,
-				B7B4603E2F2C2DFB00F19C59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
