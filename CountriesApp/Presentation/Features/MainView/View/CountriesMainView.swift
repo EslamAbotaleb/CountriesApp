@@ -56,11 +56,17 @@ struct CountriesMainView: View {
                     Section("Search Results") {
                         ForEach(viewModel.searchResults) { country in
                             SearchResultRow(
-                                country: country,
-                                isDisabled: viewModel.selectedCountries.count >= 5
-                            ) {
-                                viewModel.addCountry(country)
-                            }
+                                    country: country,
+                                    isSelected: viewModel.selectedCountries.contains(where: { $0.name == country.name }),
+                                    isDisabled: viewModel.selectedCountries.count >= 5,
+                                    onAction: {
+                                        if viewModel.selectedCountries.contains(where: { $0.name == country.name }) {
+                                            viewModel.removeCountry(country)
+                                        } else {
+                                            viewModel.addCountry(country)
+                                        }
+                                    }
+                                )
                         }
                     }
                 }

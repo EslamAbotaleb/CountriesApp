@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SearchResultRow: View {
     let country: CountryDTO
+    let isSelected: Bool
     let isDisabled: Bool
-    let onAdd: () -> Void
+    let onAction: () -> Void
 
     var body: some View {
         HStack {
@@ -24,12 +25,12 @@ struct SearchResultRow: View {
 
             Spacer()
 
-            Button(action: onAdd) {
-                Image(systemName: "plus.circle.fill")
+            Button(action: onAction) {
+                Image(systemName: isSelected ? "minus.circle.fill" : "plus.circle.fill")
                     .font(.title3)
+                    .foregroundStyle(isSelected ? .red : (isDisabled ? .gray : .blue))
             }
-            .disabled(isDisabled)
-            .foregroundStyle(isDisabled ? .gray : .blue)
+            .disabled(isDisabled && !isSelected)
         }
         .padding(.vertical, 4)
     }

@@ -50,8 +50,7 @@ extension CountryDTO {
         id: UUID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!,
         name: String = "Egypt",
         capital: String = "Cairo",
-        currency: String = "EGP"
-    ) -> CountryDTO {
+        currency: String = "EGP") -> CountryDTO {
         var country = CountryDTO(
             name: name,
             capital: capital,
