@@ -12,3 +12,4 @@ protocol BaseResponseProtocol: Decodable {
     var code: String? { get }
     var message: String? { get }
 }
+
