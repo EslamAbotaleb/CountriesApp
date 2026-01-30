@@ -25,12 +25,30 @@ final class CountriesViewModel: BaseViewModel {
     private let getCountriesUseCase: GetCountriesUseCaseProtocol
     
     private let locationManager = LocationManager()
-    private var locationCountryCode: String?
     private var searchTask: Task<Void, Never>?
+    
+    var locationCountryCode: String?
 
     // MARK: - Init
     init(getCountriesUseCase: GetCountriesUseCaseProtocol = GetCountriesUseCase(repository: CountriesRepository())) {
         self.getCountriesUseCase = getCountriesUseCase
+        
+        // Location callbacks
+        locationManager.onCountryCode = { [weak self] code in
+            guard let self = self else { return }
+            self.locationCountryCode = code
+            self.trySetDefaultCountry()
+        }
+        
+        locationManager.onAuthorizationChanged = { [weak self] status in
+            guard let self = self else { return }
+            // set default country
+            if status != .notDetermined {
+                self.trySetDefaultCountry()
+            }
+        }
+        
+        locationManager.requestLocation()
     }
     
     // Load Countries
@@ -68,61 +86,6 @@ final class CountriesViewModel: BaseViewModel {
             await MainActor.run {
                 self.searchResults = result
             }
-        }
-    }
-    
-    // Add / Remove Countries
-    func addCountry(_ country: CountryDTO) {
-        guard selectedCountries.count < 5 else { return }
-        guard !selectedCountries.contains(where: { $0.name == country.name }) else { return }
-        selectedCountries.append(country)
-    }
-    
-    func removeCountry(_ country: CountryDTO) {
-        selectedCountries.removeAll { $0.id == country.id }
-    }
-    
-    // set default country
-    private func trySetDefaultCountry() {
-        // Only set default if countries loaded and nothing selected
-        guard !allCountries.isEmpty, selectedCountries.isEmpty else { return }
-        
-        if let code = locationCountryCode,
-           let country = allCountries.first(where: { $0.name.lowercased().contains(code.lowercased()) }) {
-            selectedCountries.append(country)
-        } else if CLLocationManager().authorizationStatus != .notDetermined {
-            // Only add Egypt if user denied location
-            addEgyptAsDefaultCountry()
-        }
-    }
-    
-    private func addEgyptAsDefaultCountry() {
-        if let egypt = allCountries.first(where: { $0.name.lowercased() == "egypt" }) {
-            selectedCountries.append(egypt)
-        }
-    }
-    
-    private func setDefaultAfterCountriesLoaded() {
-        guard selectedCountries.isEmpty else { return }
-        
-        let status = CLLocationManager().authorizationStatus
-        
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            if let code = locationCountryCode,
-               let country = allCountries.first(where: {
-                   $0.name.lowercased().contains(code.lowercased())
-               }) {
-                selectedCountries.append(country)
-            }
-        case .denied, .restricted:
-            // User denied location → show Egypt
-            addEgyptAsDefaultCountry()
-        case .notDetermined:
-            // Permission not asked yet → do nothing
-            break
-        @unknown default:
-            break
         }
     }
 }
