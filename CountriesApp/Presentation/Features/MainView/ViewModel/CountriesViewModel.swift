@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import CoreLocation
 
 final class CountriesViewModel: BaseViewModel {
     
@@ -23,6 +24,8 @@ final class CountriesViewModel: BaseViewModel {
     // MARK: - Dependencies
     private let getCountriesUseCase: GetCountriesUseCaseProtocol
     
+    private let locationManager = LocationManager()
+    private var locationCountryCode: String?
     private var searchTask: Task<Void, Never>?
 
     // MARK: - Init
@@ -77,5 +80,25 @@ final class CountriesViewModel: BaseViewModel {
     
     func removeCountry(_ country: CountryDTO) {
         selectedCountries.removeAll { $0.id == country.id }
+    }
+    
+    // set default country
+    private func trySetDefaultCountry() {
+        // Only set default if countries loaded and nothing selected
+        guard !allCountries.isEmpty, selectedCountries.isEmpty else { return }
+        
+        if let code = locationCountryCode,
+           let country = allCountries.first(where: { $0.name.lowercased().contains(code.lowercased()) }) {
+            selectedCountries.append(country)
+        } else if CLLocationManager().authorizationStatus != .notDetermined {
+            // Only add Egypt if user denied location
+            addEgyptAsDefaultCountry()
+        }
+    }
+    
+    private func addEgyptAsDefaultCountry() {
+        if let egypt = allCountries.first(where: { $0.name.lowercased() == "egypt" }) {
+            selectedCountries.append(egypt)
+        }
     }
 }
